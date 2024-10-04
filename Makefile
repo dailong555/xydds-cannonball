@@ -299,11 +299,11 @@ else ifeq ($(platform), xydds)
    CXX = /opt/xydds/usr/bin/arm-linux-g++
    AR = /opt/xydds/usr/bin/arm-linux-ar
    fpic := -fPIC
-   SHARED := -shared -Wl,-version-script=link.T -Wl,-no-undefined
+   SHARED := -shared -Wl,--no-undefined -Wl,--version-script=link.T
    LDFLAGS += -lrt
-   FLAGS += -DDINGUX -fomit-frame-pointer -flto -ffast-math -marm -mtune=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard
+   FLAGS += -DDINGUX -fomit-frame-pointer -flto -ffast-math -marm -mfpu=neon-vfpv4 -mfloat-abi=hard
    FLAGS += -DLOW_FPS
-   FLAGS += -march=armv7-a
+   FLAGS += -DARM -mcpu=cortex-a7
 
 # Windows MSVC 2017 all architectures
 else ifneq (,$(findstring windows_msvc2017,$(platform)))
