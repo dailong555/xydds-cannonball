@@ -303,15 +303,7 @@ else ifeq ($(platform), xydds)
    LDFLAGS += -lrt
    FLAGS += -DDINGUX -fomit-frame-pointer -flto -ffast-math -marm -mtune=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard
    FLAGS += -DLOW_FPS
-   ifeq ($(shell echo `$(CC) -dumpversion` "< 4.9" | bc -l), 1)
-     FLAGS += -march=armv7-a
-   else
-     FLAGS += -march=armv7ve
-     # If gcc is 5.0 or later
-     ifeq ($(shell echo `$(CC) -dumpversion` ">= 5" | bc -l), 1)
-       LDFLAGS += -static-libgcc -static-libstdc++
-     endif
-   endif
+   FLAGS += -march=armv7-a
 
 # Windows MSVC 2017 all architectures
 else ifneq (,$(findstring windows_msvc2017,$(platform)))
