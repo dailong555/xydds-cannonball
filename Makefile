@@ -299,7 +299,7 @@ else ifeq ($(platform), xydds)
    CXX = /opt/xydds/usr/bin/arm-linux-g++
    AR = /opt/xydds/usr/bin/arm-linux-ar
    fpic := -fPIC
-   SHARED := -shared -Wl,--no-undefined -Wl,--version-script=link.T
+   SHARED := -shared -Wl,-version-script=link.T -Wl,-no-undefined
    LDFLAGS += -lrt
    FLAGS += -DDINGUX -fomit-frame-pointer -flto -ffast-math -marm -mtune=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard
    FLAGS += -DLOW_FPS
